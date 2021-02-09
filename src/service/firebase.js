@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -6,5 +8,8 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
 };
+console.log(process.env.REACT_APP_FIREBASE_API_KEY);
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+export default firebaseApp;

@@ -1,29 +1,34 @@
 import React from "react";
 
-import logo from "../../assets/images/logo.png";
+import Header from "./Header";
+import Footer from "./Footer";
 
 import styles from "./Login.module.css";
 import LoginButton from "./LoginButton";
 
-const LoginComponent = ({ GoogleLogin, GithubLogin, Logout }) => {
+const LoginComponent = ({ authService }) => {
+  const onLoading = e => {
+    // console.log(e.currentTarget.textContent);   e.currentTarget.textContent는 태그안에 텍스트
+    authService.login(e.currentTarget.textContent).then(console.log);
+  };
+  const logout = () => {
+    console.log("logout");
+  };
   return (
-    <div className={styles.login}>
-      <header>
-        <img src={logo} alt="logo" width="50px" height="30px" />
-        <h1 className={styles.title}>Business Card Maker</h1>
-      </header>
-      <div className={styles.body}>
-        <button className={styles.logout} onClick={Logout}>
+    <section className={styles.login}>
+      <Header />
+      <section className={styles.body}>
+        <button className={styles.logout} onClick={logout}>
           Logout
         </button>
         <h1 className={styles.loginTitle}>Login</h1>
-        <LoginButton ButtonName="Google" loginClick={GoogleLogin} />
-        <LoginButton ButtonName="Github" loginClick={GithubLogin} />
-      </div>
-      <footer>
-        <p>Code your dream</p>
-      </footer>
-    </div>
+        <ul>
+          <LoginButton ButtonName="Google" loginClick={onLoading} />
+          <LoginButton ButtonName="Github" loginClick={onLoading} />
+        </ul>
+      </section>
+      <Footer />
+    </section>
   );
 };
 

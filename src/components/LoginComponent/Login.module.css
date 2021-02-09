@@ -8,17 +8,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-header {
-  background-color: makerGreen;
-  padding: 10px 0;
-}
-.title {
-  color: #fff;
-}
+
 .body {
   background-color: #fff;
   padding: 30px;
   position: relative;
+}
+ul {
+  list-style: none;
+  padding: 0;
 }
 .logout {
   border: 0;
@@ -29,11 +27,4 @@ header {
 }
 .loginTitle {
   margin-bottom: 30px;
-}
-footer {
-  background-color: makerGreen;
-  padding: 10px 0;
-}
-p {
-  color: #fff;
 }
