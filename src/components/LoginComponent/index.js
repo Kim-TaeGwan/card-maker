@@ -16,13 +16,10 @@ const LoginComponent = ({ authService }) => {
   };
   return (
     <section className={styles.login}>
-      <Header />
-      <section className={styles.body}>
-        <button className={styles.logout} onClick={logout}>
-          Logout
-        </button>
-        <h1 className={styles.loginTitle}>Login</h1>
-        <ul>
+      <Header onLogout={logout} />
+      <section>
+        <h1>Login</h1>
+        <ul className={styles.list}>
           <LoginButton ButtonName="Google" loginClick={onLoading} />
           <LoginButton ButtonName="Github" loginClick={onLoading} />
         </ul>

@@ -8,7 +8,6 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
 };
-console.log(process.env.REACT_APP_FIREBASE_API_KEY);
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 

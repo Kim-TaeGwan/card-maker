@@ -1,6 +1,6 @@
 // import { BrowserRouter } from "react-router-dom";
 // import Routes from "./Routes";
-
+import styles from "./App.module.css";
 import LoginPage from "./components/LoginComponent";
 
 function App({ authService }) {
@@ -8,7 +8,9 @@ function App({ authService }) {
     // <BrowserRouter>
     //   <Routes />
     // </BrowserRouter>
-    <LoginPage authService={authService} />
+    <div className={styles.app}>
+      <LoginPage authService={authService} />
+    </div>
   );
 }
 
