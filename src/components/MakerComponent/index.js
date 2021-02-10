@@ -5,6 +5,8 @@ import styles from "./Maker.module.css";
 
 import Footer from "../Shared/Footer";
 import Header from "../Shared/Header";
+import Editor from "./Editor";
+import Preview from "./Preview";
 
 const MakerComponent = ({ authService }) => {
   let history = useHistory();
@@ -21,7 +23,10 @@ const MakerComponent = ({ authService }) => {
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
-      <section>main</section>
+      <div className={styles.container}>
+        <Editor />
+        <Preview />
+      </div>
       <Footer />
     </section>
   );
