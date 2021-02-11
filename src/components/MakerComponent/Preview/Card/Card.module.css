@@ -33,6 +33,15 @@
 .info {
   width: 100%;
 }
+.name,
+.company,
+.title,
+.email,
+.message {
+  margin: 0;
+  font-size: 0.8rem;
+  margin-bottom: 0.2em;
+}
 .name {
   font-size: 1.2rem;
 }
@@ -46,19 +55,4 @@
   height: 2px;
   background-color: makerWheat;
   transform: translateY(0.5em);
-}
-.title {
-}
-.email {
-}
-.message {
-}
-.name,
-.company,
-.title,
-.email,
-.message {
-  margin: 0;
-  font-size: 0.8rem;
-  margin-bottom: 0.2em;
 }

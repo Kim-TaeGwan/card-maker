@@ -26,7 +26,7 @@ const CardEditForm = ({ card }) => {
         value={company}
       />
       <select className={styles.select} name="theme" value={theme}>
-        <option value="light">:ight</option>
+        <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="colorful">colorful</option>
       </select>
