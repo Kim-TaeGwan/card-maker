@@ -9,8 +9,8 @@ import Editor from "./Editor";
 import Preview from "./Preview";
 
 const MakerComponent = ({ authService }) => {
-  const [cards, setCards] = useState([
-    {
+  const [cards, setCards] = useState({
+    1: {
       id: 1,
       name: "Ellie",
       company: "Samsung",
@@ -22,7 +22,7 @@ const MakerComponent = ({ authService }) => {
       // fileURL: "ellie.png",
       fileURL: null,
     },
-    {
+    2: {
       id: 2,
       name: "Bob",
       company: "Uber",
@@ -33,7 +33,7 @@ const MakerComponent = ({ authService }) => {
       fileName: "bob",
       fileURL: "bob.png",
     },
-    {
+    3: {
       id: 3,
       name: "Cris",
       company: "Instagram",
@@ -45,7 +45,7 @@ const MakerComponent = ({ authService }) => {
       // fileURL: "cris.png",
       fileURL: null,
     },
-  ]);
+  });
   let history = useHistory();
   const onLogout = () => {
     authService.logout();
@@ -57,15 +57,33 @@ const MakerComponent = ({ authService }) => {
       }
     });
   });
-  const addCard = card => {
-    const updated = [...cards, card];
-    setCards(updated);
+
+  const createOrUpdateCard = card => {
+    setCards(cards => {
+      const updated = { ...cards };
+      updated[card.id] = card; // updated의 키인 card.id를 card로 변경한다
+      return updated;
+    });
   };
+
+  const deleteCard = card => {
+    setCards(cards => {
+      const updated = { ...cards };
+      delete updated[card.id];
+      return updated;
+    });
+  };
+
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor cards={cards} addCard={addCard} />
+        <Editor
+          cards={cards}
+          addCard={createOrUpdateCard}
+          updateCard={createOrUpdateCard}
+          deleteCard={deleteCard}
+        />
         <Preview cards={cards} />
       </div>
       <Footer />
