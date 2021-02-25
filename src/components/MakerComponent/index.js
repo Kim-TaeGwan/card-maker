@@ -8,48 +8,48 @@ import Header from "../Shared/Header";
 import Editor from "./Editor";
 import Preview from "./Preview";
 
-const MakerComponent = ({ authService }) => {
+const MakerComponent = ({ FileInput, authService }) => {
   const [cards, setCards] = useState({
     1: {
-      id: 1,
+      id: "1",
       name: "Ellie",
       company: "Samsung",
       theme: "Dark",
       title: "Software Engineer",
-      email: "dream.coder.ellie@gmail.com",
-      message: "Don't forget to code your dream",
+      email: "ellie@gmail.com",
+      message: "go for it",
       fileName: "ellie",
-      // fileURL: "ellie.png",
       fileURL: null,
     },
     2: {
-      id: 2,
-      name: "Bob",
-      company: "Uber",
+      id: "2",
+      name: "Ellie2",
+      company: "Samsung",
       theme: "Light",
-      title: "senior Software Engineer",
-      email: "bog@uber.com",
-      message: "I love coding",
-      fileName: "bob",
-      fileURL: "bob.png",
+      title: "Software Engineer",
+      email: "ellie@gmail.com",
+      message: "go for it",
+      fileName: "ellie",
+      fileURL: "ellie.png",
     },
     3: {
-      id: 3,
-      name: "Cris",
-      company: "Instagram",
+      id: "3",
+      name: "Ellie3",
+      company: "Samsung",
       theme: "Colorful",
-      title: "Product Manager",
-      email: "christ@instagram.com",
-      message: "Design your dream",
-      fileName: "cris",
-      // fileURL: "cris.png",
+      title: "Software Engineer",
+      email: "ellie@gmail.com",
+      message: "go for it",
+      fileName: "ellie",
       fileURL: null,
     },
   });
-  let history = useHistory();
+
+  const history = useHistory();
   const onLogout = () => {
     authService.logout();
   };
+
   useEffect(() => {
     authService.onAuthChange(user => {
       if (!user) {
@@ -61,7 +61,7 @@ const MakerComponent = ({ authService }) => {
   const createOrUpdateCard = card => {
     setCards(cards => {
       const updated = { ...cards };
-      updated[card.id] = card; // updated의 키인 card.id를 card로 변경한다
+      updated[card.id] = card;
       return updated;
     });
   };
@@ -79,6 +79,7 @@ const MakerComponent = ({ authService }) => {
       <Header onLogout={onLogout} />
       <div className={styles.container}>
         <Editor
+          FileInput={FileInput}
           cards={cards}
           addCard={createOrUpdateCard}
           updateCard={createOrUpdateCard}

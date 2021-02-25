@@ -1,89 +1,104 @@
-import React from "react";
+import React, { useRef } from "react";
 import Button from "../Button";
-import ImageFileInput from "../ImageFileInput";
 
 import styles from "./CardEditForm.module.css";
 
-const CardEditForm = ({ card, updateCard, deleteCard }) => {
+const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
+  const nameRef = useRef();
+  const companyRef = useRef();
+  const themeRef = useRef();
+  const titleRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+
   const {
     name,
     company,
-    theme,
     title,
     email,
     message,
-    // fileName,
-    // fileURL,
+    theme,
+    fileName,
+    fileURL,
   } = card;
+
+  const onFileChange = file => {
+    updateCard({
+      ...card,
+      fileName: file.name,
+      fileURL: file.url,
+    });
+  };
+
   const onChange = event => {
     if (event.currentTarget == null) {
-      // 만약 이벤트에 지금 onChange가 발생하고 있는 currentTarget이 null 이라면 아무것도 안해 줌
       return;
     }
-
-    event.preventDefault(); // currentTarget이 있다면 preventDefault()를 이용해서 브라우저에 기본적인 이벤트를 처리하지 않도록 한다.
-
+    event.preventDefault();
     updateCard({
       ...card,
       [event.currentTarget.name]: event.currentTarget.value,
     });
   };
+
   const onSubmit = () => {
     deleteCard(card);
   };
+
   return (
     <form className={styles.form}>
       <input
         className={styles.input}
         type="text"
-        placeholder="Name"
         name="name"
+        ref={nameRef}
         value={name}
         onChange={onChange}
       />
       <input
         className={styles.input}
         type="text"
-        placeholder="Company"
         name="company"
+        ref={companyRef}
         value={company}
         onChange={onChange}
       />
       <select
         className={styles.select}
         name="theme"
+        ref={themeRef}
         value={theme}
         onChange={onChange}
       >
-        <option value="Light">Light</option>
-        <option value="Dark">Dark</option>
-        <option value="Colorful">Colorful</option>
+        <option value="light">light</option>
+        <option value="dark">dark</option>
+        <option value="colorful">colorful</option>
       </select>
       <input
         className={styles.input}
         type="text"
-        placeholder="Title"
         name="title"
+        ref={titleRef}
         value={title}
         onChange={onChange}
       />
       <input
         className={styles.input}
         type="text"
-        placeholder="Email"
         name="email"
+        ref={emailRef}
         value={email}
         onChange={onChange}
       />
       <textarea
         className={styles.textarea}
-        placeholder="Message"
+        ref={messageRef}
         name="message"
         value={message}
         onChange={onChange}
       />
       <div className={styles.fileInput}>
-        <ImageFileInput />
+        <FileInput name={name} onFileChange={onFileChange} />
       </div>
       <Button name="Delete" onClick={onSubmit} />
     </form>
