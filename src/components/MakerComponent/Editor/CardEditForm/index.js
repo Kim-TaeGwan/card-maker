@@ -70,9 +70,9 @@ const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
         value={theme}
         onChange={onChange}
       >
-        <option value="light">light</option>
-        <option value="dark">dark</option>
-        <option value="colorful">colorful</option>
+        <option value="Light">Light</option>
+        <option value="Dark">Dark</option>
+        <option value="Colorful">Colorful</option>
       </select>
       <input
         className={styles.input}
@@ -98,7 +98,7 @@ const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
         onChange={onChange}
       />
       <div className={styles.fileInput}>
-        <FileInput name={name} onFileChange={onFileChange} />
+        <FileInput name={fileName} onFileChange={onFileChange} />
       </div>
       <Button name="Delete" onClick={onSubmit} />
     </form>
