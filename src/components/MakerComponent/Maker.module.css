@@ -2,6 +2,7 @@
 @value makerWhite from '../../common/colors.css';
 
 .maker {
+  max-width: 80rem;
   width: 100%;
   height: 100%;
   display: flex;
@@ -9,6 +10,7 @@
   background-color: makerWhite;
 }
 .container {
+  min-height: 0;
   display: flex;
   flex: 1;
 }
