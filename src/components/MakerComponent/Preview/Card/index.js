@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import styles from "./Card.module.css";
 
@@ -6,7 +6,7 @@ import styles from "./Card.module.css";
 
 const DEFAULT_IMAGE = "/images/default_logo.png";
 
-const Card = ({ card }) => {
+const Card = memo(({ card }) => {
   const { name, company, theme, title, email, message, fileURL } = card;
 
   const url = fileURL || DEFAULT_IMAGE;
@@ -22,7 +22,7 @@ const Card = ({ card }) => {
       </div>
     </li>
   );
-};
+});
 
 function getStyles(theme) {
   switch (theme) {

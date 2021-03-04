@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 import styles from "./Maker.module.css";
@@ -14,9 +14,10 @@ const MakerComponent = ({ FileInput, authService, cardRepository }) => {
   const [cards, setCards] = useState({});
   const [userId, setUserID] = useState(historyState && historyState.id);
 
-  const onLogout = () => {
+  const onLogout = useCallback(() => {
+    // 함수 컴포넌트에서 함수가 계속 호출이 되어도 동일한 데이터를 쓰려면 useCallback을 사용해야한다
     authService.logout();
-  };
+  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
