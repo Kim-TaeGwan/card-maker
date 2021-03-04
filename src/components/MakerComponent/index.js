@@ -26,7 +26,8 @@ const MakerComponent = ({ FileInput, authService, cardRepository }) => {
       setCards(cards);
     });
     return () => stopSync();
-  });
+  }, [userId, cardRepository]);
+
   useEffect(() => {
     //로그인
     authService.onAuthChange(user => {
@@ -36,7 +37,7 @@ const MakerComponent = ({ FileInput, authService, cardRepository }) => {
         history.push("/");
       }
     });
-  });
+  }, [authService, history]);
 
   const createOrUpdateCard = card => {
     setCards(cards => {
