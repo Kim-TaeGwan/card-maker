@@ -11,11 +11,7 @@ const Header = memo(({ onLogout }) => {
         </button>
       )}
 
-      <img
-        className={styles.logo}
-        src="../../../assets/images/logo.png"
-        alt="logo"
-      />
+      <img className={styles.logo} src="assets/images/logo.png" alt="logo" />
       <h1 className={styles.title}>Business Card Maker</h1>
     </header>
   );
